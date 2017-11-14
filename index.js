@@ -17,7 +17,10 @@ function async_get_object(image_name, success_callback, err_callback){
   s3.getObject(
     {Bucket: source_bucket_name, Key: image_name},
     function(err, data){
-      if (err) { err_callback(err); }
+      if (err) {
+        console.log('Unable to find: ' + source_bucket_name + ':' + image_name);
+        err_callback(err);
+      }
       else { success_callback(data); }
     }
   )
