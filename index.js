@@ -6,8 +6,9 @@ let sharp = require('sharp');
 
 // init AWS
 let s3 = new AWS.S3();
-const source_bucket_name = 'cs4540-fall-2017-images-originals';
-const target_bucket_name = 'cs4540-fall-2017-images-sized';
+const github_username = process.env.GITHUB_USERNAME;
+const source_bucket_name = 'cs4540-fall-2017-' + github_username + '-originals';
+const target_bucket_name = 'cs4540-fall-2017-' + github_username + '-sized';
 const resolutions = [[50, 50], [100,100], [500,500]];
 
 // retrieve an original image from S3 (must already exist!)  Image is
